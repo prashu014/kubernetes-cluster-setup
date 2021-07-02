@@ -1,0 +1,13 @@
+- hosts: all
+  vars:
+    - docker_version: '20.10.7-3.el7.x86_64'
+  tasks:
+  - name: Install docker
+    yum:
+      name:
+        - "docker-ce-{{ docker_version }}"
+        - "docker-ce-cli-{{ docker_version }}"
+        - containerd.io
+      state: present
+    when: (docker_version != "")
+

@@ -1,0 +1,11 @@
+- hosts: all
+  vars:
+    - kube_version: '1.21.1'
+  tasks:
+  - name: Install kubernetes
+    yum:
+      name:
+        - "kubeadm-{{ kube_version }}"
+        - "kubelet-{{ kube_version }}"
+        - "kubectl-{{ kube_version }}"
+      state: present
